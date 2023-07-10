@@ -1,0 +1,33 @@
+<router-outlet></router-outlet>
+<h2 style="color: #001529">NÓMINA DE CLIENTES</h2>
+<nz-table
+  #basicTable
+  [nzData]="listaClientes"
+  class="pt-4"
+  [nzScroll]="{ x: '600px' }"
+>
+  <thead>
+    <tr>
+      <th nzWidth="10%" nzAlign="center">Identificación</th>
+      <th nzWidth="10%" nzAlign="center">Nombre</th>
+      <th nzWidth="10%" nzAlign="center">F. Nacimiento</th>
+      <th nzWidth="30%" nzAlign="center">Dirección</th>
+      <th nzWidth="10%" nzAlign="center">Teléfono</th>
+      <th nzWidth="10%" nzAlign="center">Email</th>
+      <th nzWidth="10%" nzAlign="center">Estado</th>
+      <th nzWidth="10%" nzAlign="center">Tipo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td nzAlign="center" nz>{{ data.identificacion }}</td>
+      <td nzAlign="center">{{ data.nombre }}</td>
+      <td nzAlign="center">{{ data.fechaNacimiento }}</td>
+      <td nzAlign="center">{{ data.direccion }}</td>
+      <td nzAlign="center">{{ data.telefono }}</td>
+      <td nzAlign="center">{{ data.correoElectronico }}</td>
+      <td nzAlign="center">{{ data.estado ? "Activo" : "Inactivo" }}</td>
+      <td nzAlign="center">{{ data.idTipo }}</td>
+    </tr>
+  </tbody>
+</nz-table>

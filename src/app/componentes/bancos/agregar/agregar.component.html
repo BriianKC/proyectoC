@@ -1,0 +1,96 @@
+<router-outlet></router-outlet>
+<h2 style="color: #001529">NUEVA CUENTA BANCARIA</h2>
+<form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm($event)">
+  <nz-form-label for="codigo">CÓDIGO</nz-form-label>
+  <nz-form-item>
+    <div style="color: blue">{{ codigo + contador }}</div>
+  </nz-form-item>
+  <nz-form-label for="nombre" nzRequired>NOMBRE</nz-form-label>
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input formControlName="nombreCB" id="nombreCB" />
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          validateForm.get('nombreCB')?.errors &&
+          validateForm.get('nombreCB')?.touched
+        "
+      >
+        <p *ngIf="validateForm.get('nombreCB')?.hasError">
+          El campo es requerido
+        </p>
+        <p *ngIf="validateForm.get('nombreCB')?.hasError('pattern')">
+          Digite solo LETRAS y solo UN espacio en BLANCO.
+        </p>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-label for="entidad" nzRequired>ENTIDAD</nz-form-label>
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input formControlName="entidadCB" id="entidadCB" />
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          validateForm.get('entidadCB')?.errors &&
+          validateForm.get('entidadCB')?.touched
+        "
+      >
+        <p *ngIf="validateForm.get('entidadCB')?.hasError">
+          El campo es requerido
+        </p>
+        <p *ngIf="validateForm.get('entidadCB')?.hasError('pattern')">
+          Digite solo LETRAS y solo UN espacio en BLANCO.
+        </p>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-label for="descripcion" nzRequired>DESCRIPCIÓN</nz-form-label>
+  <nz-form-item>
+    <nz-form-control>
+      <input nz-input formControlName="descripcionCB" id="descripcionCB" />
+      <div
+        class="alert alert-danger"
+        *ngIf="
+          validateForm.get('descripcionCB')?.errors &&
+          validateForm.get('descripcionCB')?.touched
+        "
+      >
+        <p *ngIf="validateForm.get('descripcionCB')?.hasError">
+          El campo es requerido
+        </p>
+        <p *ngIf="validateForm.get('descripcionCB')?.hasError('pattern')">
+          Digite solo LETRAS y solo UN espacio en BLANCO.
+        </p>
+      </div>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-label for="estado" nzRequired>ESTADO</nz-form-label>
+  <nz-form-item>
+    <nz-form-control nzErrorTip="Seleccione el estado">
+      <nz-select
+        formControlName="estadoCB"
+        id="estadoCB"
+        nzPlaceHolder="Seleccione..."
+      >
+        <nz-option nzValue="true" nzLabel="Habilitado"></nz-option>
+        <nz-option nzValue="false" nzLabel="Deshabilitado"></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button routerLink="/inicio">
+        <span nz-icon nzType="caret-left" nzTheme="outline"></span>Regresar
+      </button>
+      <button nz-button nzType="dashed" (click)="resetForm()">
+        <span nz-icon nzType="clear" nzTheme="outline"></span>
+        Limpiar
+      </button>
+      <button nz-button nzType="primary" type="submit">
+        <span nz-icon nzType="save"></span> Agregar
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

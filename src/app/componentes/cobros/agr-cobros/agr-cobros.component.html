@@ -1,0 +1,94 @@
+<router-outlet></router-outlet>
+<h2 style="color: #001529">NUEVO COBRO</h2>
+<form nz-form>
+  <nz-row [nzGutter]="8">
+    <nz-col nzSpan="2">
+      <nz-form-label for="codigo">ID COBRO</nz-form-label>
+      <nz-form-item>
+        <div style="color: blue">7</div>
+      </nz-form-item>
+    </nz-col>
+
+    <nz-col nzSpan="2">
+      <nz-form-label for="codigo">FECHA</nz-form-label>
+      <nz-form-item>
+        <div style="color: blue">28/06/2023</div>
+      </nz-form-item>
+    </nz-col>
+    <nz-col nzSpan="5">
+      <nz-form-label for="estado" nzRequired>CLIENTE</nz-form-label>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Seleccione cliente">
+          <nz-select
+            formControlName="estadoCB"
+            id="estadoCB"
+            nzPlaceHolder="Seleccione..."
+          >
+            <nz-option nzValue="true" nzLabel="Habilitado"></nz-option>
+            <nz-option nzValue="false" nzLabel="Deshabilitado"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col nzSpan="5">
+      <nz-form-label for="estado" nzRequired>CUENTA BANCARIA</nz-form-label>
+      <nz-form-item>
+        <nz-form-control nzErrorTip="Seleccione cliente">
+          <nz-select
+            formControlName="estadoCB"
+            id="estadoCB"
+            nzPlaceHolder="Seleccione..."
+          >
+            <nz-option nzValue="true" nzLabel="Habilitado"></nz-option>
+            <nz-option nzValue="false" nzLabel="Deshabilitado"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+    <nz-col nzSpan="10">
+      <nz-form-label for="nombre" nzRequired>DESCRIPCIÓN</nz-form-label>
+      <nz-form-item>
+        <nz-form-control>
+          <input nz-input formControlName="nombreCB" id="nombreCB" />
+        </nz-form-control>
+      </nz-form-item>
+    </nz-col>
+  </nz-row>
+  <h4 style="color: gray">FACTURAS DEL CLIENTE</h4>
+  <nz-table #basicTable class="pt-4" [nzScroll]="{ x: '600px' }">
+    <thead>
+      <tr>
+        <th nzWidth="20%" nzAlign="center">N° FACTURA</th>
+        <th nzWidth="20%" nzAlign="center">CÉDULA</th>
+        <th nzWidth="15%" nzAlign="center">FECHA</th>
+        <th nzWidth="10%" nzAlign="center">IVA</th>
+        <th nzWidth="15%" nzAlign="center">SUBTOTAL</th>
+        <th nzWidth="20%" nzAlign="center">TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td nzAlign="center" nz>{{ data.idCB }}</td>
+        <td nzAlign="center">{{ data.nombreCB }}</td>
+        <td nzAlign="center">{{ data.entidadCB }}</td>
+        <td nzAlign="center">{{ data.descripcionCB }}</td>
+        <td nzAlign="center">
+          {{ data.estadoCB ? "Habilitado" : "Deshabilitado" }}
+        </td>
+        <td nzAlign="center">
+          <a [routerLink]="['/modificar', data.idCB]">Editar</a>
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  <nz-form-item>
+    <nz-form-control>
+      <button nz-button routerLink="/iniCobros">
+        <span nz-icon nzType="caret-left" nzTheme="outline"></span>Regresar
+      </button>
+      <button nz-button nzType="primary" type="submit">
+        <span nz-icon nzType="save"></span> Agregar
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

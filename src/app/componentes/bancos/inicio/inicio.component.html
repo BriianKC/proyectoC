@@ -1,0 +1,33 @@
+<router-outlet></router-outlet>
+<button nz-button nzType="primary" routerLink="/agregar">
+  <span nz-icon nzType="plus"></span>
+  Agregar
+</button>
+
+<nz-table
+  #basicTable
+  [nzData]="listaCuentaBancaria"
+  class="pt-4"
+  [nzScroll]="{ x: '600px' }"
+>
+  <thead>
+    <tr>
+      <th nzWidth="10%" nzAlign="center">Código</th>
+      <th nzWidth="25%" nzAlign="center">Nombre</th>
+      <th nzWidth="10%" nzAlign="center">Entidad</th>
+      <th nzWidth="40%" nzAlign="center">Descripción</th>
+      <th nzWidth="10%" nzAlign="center">Estado</th>
+      <th nzWidth="10%" nzAlign="center">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td nzAlign="center" nz>{{ data.idCB }}</td>
+      <td nzAlign="center">{{ data.nombreCB }}</td>
+      <td nzAlign="center">{{ data.entidadCB }}</td>
+      <td nzAlign="center">{{ data.descripcionCB }}</td>
+      <td nzAlign="center">{{ data.estadoCB ?'Habilitado':'Deshabilitado' }}</td>
+      <td nzAlign="center"><a [routerLink]="['/modificar', data.idCB]">Editar</a></td>
+    </tr>
+  </tbody>
+</nz-table>
